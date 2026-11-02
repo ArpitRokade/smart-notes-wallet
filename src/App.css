@@ -1,0 +1,310 @@
+:root {
+  --bg-color: #090d16;
+  --card-bg: rgba(30, 41, 59, 0.85);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(15, 23, 42, 0.7);
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --radius: 16px;
+}
+
+[data-theme="light"] {
+  --bg-color: #f1f5f9;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 25px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-title {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.theme-btn {
+  background: var(--input-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  border-color: var(--primary);
+}
+
+/* --- NOTE INPUT FORM --- */
+.note-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.note-input {
+  flex: 1;
+  background: var(--input-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.note-input:focus {
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+/* --- WALLET & CARDS CONTAINER --- */
+.wallet {
+  position: relative;
+  width: 280px;
+  height: 260px;
+  cursor: pointer;
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.wallet-back {
+  position: absolute;
+  bottom: 0;
+  width: 280px;
+  height: 200px;
+  background: #1e341e;
+  border-radius: 22px 22px 60px 60px;
+  z-index: 5;
+  box-shadow: inset 0 25px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Dynamic Note Cards (Replacing static wallet cards) */
+.card {
+  position: absolute;
+  width: 260px;
+  height: 120px;
+  left: 10px;
+  border-radius: 14px;
+  padding: 14px;
+  color: #fff;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 -4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+}
+
+.card.completed-card {
+  background: linear-gradient(135deg, #334155, #1e293b);
+  opacity: 0.85;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.chip {
+  width: 28px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.note-content-text {
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.note-content-text.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.card-action-btn {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card-action-btn.delete { background: rgba(239, 68, 68, 0.8); }
+.card-action-btn.edit { background: rgba(245, 158, 11, 0.8); }
+
+.edit-note-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Pocket */
+.pocket {
+  position: absolute;
+  bottom: 0;
+  width: 280px;
+  height: 160px;
+  z-index: 100;
+  filter: drop-shadow(0 15px 25px rgba(20, 40, 20, 0.4));
+  pointer-events: none;
+}
+
+.pocket-content {
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  text-align: center;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.balance-stars {
+  color: #839e7b;
+  font-size: 20px;
+  letter-spacing: 4px;
+  transition: 0.3s;
+}
+
+.balance-real {
+  color: #a7c59e;
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 5px);
+  transition: 0.3s;
+}
+
+/* Wallet Hover & Stacking Dynamic Effect */
+.wallet:hover .balance-stars { opacity: 0; }
+.wallet:hover .balance-real { opacity: 1; transform: translate(-50%, 0); }
+
+/* Dynamic stacking based on index */
+.wallet:hover .card:nth-child(1) { transform: translateY(-110px) rotate(-4deg); }
+.wallet:hover .card:nth-child(2) { transform: translateY(-80px) rotate(2deg); }
+.wallet:hover .card:nth-child(3) { transform: translateY(-50px) rotate(-2deg); }
+.wallet:hover .card:nth-child(n+4) { transform: translateY(-30px) rotate(1deg); }
+
+.card:hover {
+  z-index: 200 !important;
+  transform: scale(1.05) translateY(-90px) rotate(0deg) !important;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 20px;
+  font-size: 14px;
+}
