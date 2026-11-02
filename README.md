@@ -1,16 +1,38 @@
-# React + Vite
+# ⚡ Smart Notes Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, sleek, and feature-rich **Smart Notes & Theme Saver** application built with **ReactJS** and inspired by Uiverse wallet card mechanics. It features persistent local storage, global state management via the Context API, dynamic Dark/Light mode switching, and an interactive stacked card UI.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Global State Management:** Powered by React's `Context API` (`NotesContext`) for seamless cross-component communication without prop drilling.
+- **Data Persistence:** Automatically saves your notes and theme preferences to `localStorage`, ensuring data survives page refreshes.
+- **Full CRUD Operations:** 
+  - 📝 **Add Notes:** Functional updates (`prev => [...]`) prevent accidental data overwrites.
+  - ✅ **Toggle Complete:** Interactive strikethrough using immutable array mapping (`map` & spread operator).
+  - ✏️ **Edit Notes:** Inline note modification with instant state reflection.
+  - 🗑️ **Delete Notes:** Clean array removal using the `filter` method.
+- **Dark & Light Mode:** Fully adaptive CSS variables with dynamic `document.body` attribute toggling.
+- **Immersive Wallet UI:** Unique card-stacking animation where notes behave like financial cards inside a wallet pocket, complete with live completion counters.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
+
+```text
+smart-notes-wallet/
+├── src/
+│   ├── components/
+│   │   ├── NoteInput.jsx    # Input form for creating new notes
+│   │   └── NoteList.jsx     # Wallet-style stacked card list & CRUD actions
+│   ├── context/
+│   │   └── NotesContext.jsx # Global state, actions, and localStorage sync
+│   ├── App.jsx              # Main layout & theme coordination
+│   └── App.css              # Modern CSS variables, glassmorphism & animations
+├── index.html
+└── package.json
